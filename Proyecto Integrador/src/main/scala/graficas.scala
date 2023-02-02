@@ -52,7 +52,7 @@ object graficas extends App {
     .yLabel("Productions")
     .bottomLegend()
     .render()
-    .write(new File("C:\Users\Abraham\DownloadsBarchart.png"))
+    .write(new File("C:\\Users\\Abraham\\DownloadsBarchart.png"))
 
   //Datos numericos
 
@@ -64,7 +64,7 @@ object graficas extends App {
     .yAxis()
     .xbounds(budget.min, budget.max)
     .render()
-    .write(new File("C:\Users\Abraham\DownloadshistogramBudget.png"))
+    .write(new File("C:\\Users\\Abraham\\DownloadshistogramBudget.png"))
 
   val popularity = data.flatMap(elem => elem.get("popularity")).map(_.toDouble)
 
@@ -74,7 +74,7 @@ object graficas extends App {
     .yAxis()
     .xbounds(popularity.min, popularity.max)
     .render()
-    .write(new File("C:\Users\Abraham\DownloadshistogramPopularity.png"))
+    .write(new File("C:\\Users\\Abraham\\DownloadshistogramPopularity.png"))
 
   val revenue = data.flatMap(elem => elem.get("revenue")).map(_.toDouble)
 
@@ -84,7 +84,7 @@ object graficas extends App {
     .yAxis()
     .xbounds(revenue.min, revenue.max)
     .render()
-    .write(new File("C:\Users\Abraham\DownloadshistogramRevenue.png"))
+    .write(new File("C:\\Users\\Abraham\\DownloadshistogramRevenue.png"))
 
   var runtime = data.flatMap(elem => elem.get("runtime")).filter(_.isEmpty != true)
   val runtime0 = runtime.filter(_.isEmpty == true).map(_ => "0")
@@ -97,7 +97,7 @@ object graficas extends App {
     .yAxis()
     .xbounds(runtime1.min, runtime1.max)
     .render()
-    .write(new File("C:\Users\Abraham\DownloadshistogramRuntime.png"))
+    .write(new File("C:\\Users\\Abraham\\DownloadshistogramRuntime.png"))
 
   val vote_average = data.flatMap(elem => elem.get("vote_average")).map(_.toDouble)
 
@@ -107,7 +107,7 @@ object graficas extends App {
     .yAxis()
     .xbounds(vote_average.min, vote_average.max)
     .render()
-    .write(new File("C:\Users\Abraham\DownloadshistogramVote_average.png"))
+    .write(new File("C:\\Users\\Abraham\\DownloadshistogramVote_average.png"))
 
   val vote_count = data.flatMap(elem => elem.get("vote_count")).map(_.toDouble)
 
@@ -117,7 +117,7 @@ object graficas extends App {
     .yAxis()
     .xbounds(vote_count.min, vote_count.max)
     .render()
-    .write(new File("C:\Users\Abraham\DownloadshistogramVote_count.png"))
+    .write(new File("C:\\Users\\Abraham\\DownloadshistogramVote_count.png"))
 
   //Datos tipo cadena
 
@@ -135,7 +135,7 @@ object graficas extends App {
     .frame()
     .bottomLegend()
     .render()
-    .write(new File("C:\Users\Abraham\DownloadsBarchartGenres.png"))
+    .write(new File("C:\\Users\\Abraham\\DownloadsBarchartGenres.png"))
 
   val release_date = data.flatMap(x => x.get("release_date"))
     .groupBy(identity)
@@ -151,7 +151,7 @@ object graficas extends App {
     .frame()
     .bottomLegend()
     .render()
-    .write(new File("C:\Users\Abraham\DownloadsBarchartRelease_date.png"))
+    .write(new File("C:\\Users\\Abraham\\DownloadsBarchartRelease_date.png"))
 
   val status = data.flatMap(x => x.get("status"))
     .groupBy(identity)
@@ -167,7 +167,7 @@ object graficas extends App {
     .frame()
     .bottomLegend()
     .render()
-    .write(new File("C:\Users\Abraham\DownloadsBarchartStatus.png"))
+    .write(new File("C:\\Users\\Abraham\\DownloadsBarchartStatus.png"))
 
   val title = data.flatMap(x => x.get("title"))
     .groupBy(identity)
@@ -183,7 +183,7 @@ object graficas extends App {
     .frame()
     .bottomLegend()
     .render()
-    .write(new File("C:\Users\Abraham\DownloadsBarcharTitle.png"))
+    .write(new File("C:\\Users\\Abraham\\DownloadsBarcharTitle.png"))
 
   val director = data.flatMap(x => x.get("director"))
     .groupBy(identity)
@@ -199,7 +199,7 @@ object graficas extends App {
     .frame()
     .bottomLegend()
     .render()
-    .write(new File("C:\Users\Abraham\DownloadsBarchartDirector.png"))
+    .write(new File("C:\\Users\\Abraham\\DownloadsBarchartDirector.png"))
 
 }
 

@@ -3,14 +3,14 @@ import java.io.File
 
 object colNumerica extends App {
 
-  val reader = CSVReader.open(new File("movie_dataset.csv"))
+  val reader = CSVReader.open(new File("src/main/scala/movie_dataset.csv"))
   val data = reader.allWithHeaders()
   reader.close()
 
   //budget
   val budget = data.flatMap(elem => elem.get("budget")).map(_.toInt)
-  val min0Budget = budget.min
-  val minBudget = budget.filter(_ > 0).min
+  val men0Budget = budget.min
+  val menorpromBudget = budget.filter(_ > 0).min
   val PromBudget = budget.sum.toDouble / budget.size
   val maxBudget = budget.max
 
@@ -18,20 +18,20 @@ object colNumerica extends App {
     "El valor minimo de budget incluido 0 es: %s\n" +
     "El valor minimo de budget sin 0 es: %s\n" +
     "El valor maximo de budget es %s\n",
-    PromBudget, min0Budget, minBudget, maxBudget)
+    PromBudget, men0Budget, menorpromBudget, maxBudget)
 
   //popularity
   val popularity = data.flatMap(elem => elem.get("popularity")).map(_.toDouble)
-  val min0Pop = popularity.min
-  val minPop = popularity.filter(_ > 0).min
-  val PromPop = popularity.sum / popularity.size
-  val maxPop = popularity.max
+  val men0popularity = popularity.min
+  val minPopularity = popularity.filter(_ > 0).min
+  val PromPopularity = popularity.sum / popularity.size
+  val maxPopularity = popularity.max
 
   printf("\nEl promedio de popularity es: %s\n" +
     "El valor minimo de popularity incluido 0 es: %s\n" +
     "El valor minimo de popularity sin 0 es: %s\n" +
     "El valor maximo de popularity es %s\n",
-    PromPop, min0Pop, minPop, maxPop)
+    PromPopularity, men0popularity, minPopularity, maxPopularity)
 
   //revenue
   val revenue = data.flatMap(elem => elem.get("revenue")).map(_.toDouble)
@@ -46,47 +46,29 @@ object colNumerica extends App {
     "El valor maximo de revenue es %s\n",
     PromRevenue, min0Revenue, minRevenue, maxRevenue)
 
-
-  //runtime
-  var runtime = data.flatMap(elem => elem.get("runtime")).filter(_.isEmpty != true)
-  val runtime0 = runtime.filter(_.isEmpty == true).map(_ => "0")
-  runtime = runtime ++ runtime0
-  val runtime1 = runtime.map(_.toDouble)
-
-  val min0Runtime = runtime1.min
-  val minRuntime = runtime1.filter(_ > 0).min
-  val PromRuntime = runtime1.sum / runtime.size
-  val maxRuntime = runtime1.max
-
-  printf("\nEl promedio de runtime es: %s\n" +
-    "El valor minimo de runtime incluido 0 es: %s\n" +
-    "El valor minimo de runtime sin 0 es: %s\n" +
-    "El valor maximo de runtime es %s\n",
-    PromRuntime, min0Runtime, minRuntime, maxRuntime)
-
   //vote_average
   val vote_average = data.flatMap(elem => elem.get("vote_average")).map(_.toDouble)
-  val min0Va = vote_average.min
-  val minVa = vote_average.filter(_ > 0).min
-  val PromVa = vote_average.sum / vote_average.size
-  val maxVa = vote_average.max
+  val min0Average = vote_average.min
+  val minAverage = vote_average.filter(_ > 0).min
+  val promAverage = vote_average.sum / vote_average.size
+  val maxAverage = vote_average.max
 
   printf("\nEl promedio de vote_average es: %s\n" +
     "El valor minimo de vote_average incluido 0 es: %s\n" +
     "El valor minimo de vote_average sin 0 es: %s\n" +
     "El valor maximo de vote_average es %s\n",
-    PromVa, min0Va, minVa, maxVa)
+    promAverage, min0Average, minAverage, maxAverage)
 
   //vote_count
   val vote_count = data.flatMap(elem => elem.get("vote_count")).map(_.toInt)
-  val min0Vc = vote_count.min
-  val minVc = vote_count.filter(_ > 0).min
-  val PromVc = vote_count.sum.toDouble / vote_count.size
-  val maxVc = vote_count.max
+  val min0vote_count = vote_count.min
+  val min_vote_count = vote_count.filter(_ > 0).min
+  val prom_vote_count = vote_count.sum.toDouble / vote_count.size
+  val max_vote_count = vote_count.max
 
   printf("\nEl promedio de vote_count es: %s\n" +
     "El valor minimo de vote_count incluido 0 es: %s\n" +
     "El valor minimo de vote_count sin 0 es: %s\n" +
     "El valor maximo de vote_count es %s\n",
-    PromVc, min0Vc, minVc, maxVc)
+    prom_vote_count, min0vote_count, min_vote_count, max_vote_count)
 }
