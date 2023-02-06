@@ -7,20 +7,7 @@ object colNumerica extends App {
   val data = reader.allWithHeaders()
   reader.close()
 
-  //budget
-  val budget = data.flatMap(elem => elem.get("budget")).map(_.toInt)
-  val men0Budget = budget.min
-  val menorpromBudget = budget.filter(_ > 0).min
-  val PromBudget = budget.sum.toDouble / budget.size
-  val maxBudget = budget.max
 
-  printf("\nEl promedio de budget es: %s\n" +
-    "El valor minimo de budget incluido 0 es: %s\n" +
-    "El valor minimo de budget sin 0 es: %s\n" +
-    "El valor maximo de budget es %s\n",
-    PromBudget, men0Budget, menorpromBudget, maxBudget)
-
-  //popularity
   val popularity = data.flatMap(elem => elem.get("popularity")).map(_.toDouble)
   val men0popularity = popularity.min
   val minPopularity = popularity.filter(_ > 0).min
@@ -33,7 +20,6 @@ object colNumerica extends App {
     "El valor maximo de popularity es %s\n",
     PromPopularity, men0popularity, minPopularity, maxPopularity)
 
-  //revenue
   val revenue = data.flatMap(elem => elem.get("revenue")).map(_.toDouble)
   val min0Revenue = revenue.min
   val minRevenue = revenue.filter(_ > 0).min
@@ -46,7 +32,7 @@ object colNumerica extends App {
     "El valor maximo de revenue es %s\n",
     PromRevenue, min0Revenue, minRevenue, maxRevenue)
 
-  //vote_average
+
   val vote_average = data.flatMap(elem => elem.get("vote_average")).map(_.toDouble)
   val min0Average = vote_average.min
   val minAverage = vote_average.filter(_ > 0).min
@@ -59,7 +45,6 @@ object colNumerica extends App {
     "El valor maximo de vote_average es %s\n",
     promAverage, min0Average, minAverage, maxAverage)
 
-  //vote_count
   val vote_count = data.flatMap(elem => elem.get("vote_count")).map(_.toInt)
   val min0vote_count = vote_count.min
   val min_vote_count = vote_count.filter(_ > 0).min
@@ -71,4 +56,8 @@ object colNumerica extends App {
     "El valor minimo de vote_count sin 0 es: %s\n" +
     "El valor maximo de vote_count es %s\n",
     prom_vote_count, min0vote_count, min_vote_count, max_vote_count)
+
+
+
 }
+

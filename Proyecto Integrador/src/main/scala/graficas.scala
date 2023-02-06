@@ -28,7 +28,7 @@ object graficas extends App {
     .yAxis()
     .xbounds(1916.0, 2018.0)
     .render()
-    .write(new File("C:\\Users\\A\\CodeStats\\histoYear.png"))
+    .write(new File("C:\\Users\\Abraham\\Downloads\\ReleaseList.png"))
 
   val productionCompanies = data
     .flatMap(row => row.get("production_companies"))
@@ -52,9 +52,7 @@ object graficas extends App {
     .yLabel("Productions")
     .bottomLegend()
     .render()
-    .write(new File("C:\\Users\\Abraham\\DownloadsBarchart.png"))
-
-  //Datos numericos
+    .write(new File("C:\\Users\\Abraham\\Downloads\\pCompaniesValues.png"))
 
   val budget = data.flatMap(row => row.get("budget")).map(_.toDouble)
 
@@ -64,7 +62,7 @@ object graficas extends App {
     .yAxis()
     .xbounds(budget.min, budget.max)
     .render()
-    .write(new File("C:\\Users\\Abraham\\DownloadshistogramBudget.png"))
+    .write(new File("C:\\Users\\Abraham\\Downloads\\budget.png"))
 
   val popularity = data.flatMap(elem => elem.get("popularity")).map(_.toDouble)
 
@@ -74,7 +72,7 @@ object graficas extends App {
     .yAxis()
     .xbounds(popularity.min, popularity.max)
     .render()
-    .write(new File("C:\\Users\\Abraham\\DownloadshistogramPopularity.png"))
+    .write(new File("C:\\Users\\Abraham\\Downloads\\popularity.png"))
 
   val revenue = data.flatMap(elem => elem.get("revenue")).map(_.toDouble)
 
@@ -84,7 +82,7 @@ object graficas extends App {
     .yAxis()
     .xbounds(revenue.min, revenue.max)
     .render()
-    .write(new File("C:\\Users\\Abraham\\DownloadshistogramRevenue.png"))
+    .write(new File("C:\\Users\\Abraham\\Downloads\\revenue.png"))
 
   var runtime = data.flatMap(elem => elem.get("runtime")).filter(_.isEmpty != true)
   val runtime0 = runtime.filter(_.isEmpty == true).map(_ => "0")
@@ -97,7 +95,7 @@ object graficas extends App {
     .yAxis()
     .xbounds(runtime1.min, runtime1.max)
     .render()
-    .write(new File("C:\\Users\\Abraham\\DownloadshistogramRuntime.png"))
+    .write(new File("C:\\Users\\Abraham\\Downloads\\Runtime.png"))
 
   val vote_average = data.flatMap(elem => elem.get("vote_average")).map(_.toDouble)
 
@@ -107,7 +105,7 @@ object graficas extends App {
     .yAxis()
     .xbounds(vote_average.min, vote_average.max)
     .render()
-    .write(new File("C:\\Users\\Abraham\\DownloadshistogramVote_average.png"))
+    .write(new File("C:\\Users\\Abraham\\Downloads\\Vote_average.png"))
 
   val vote_count = data.flatMap(elem => elem.get("vote_count")).map(_.toDouble)
 
@@ -117,7 +115,7 @@ object graficas extends App {
     .yAxis()
     .xbounds(vote_count.min, vote_count.max)
     .render()
-    .write(new File("C:\\Users\\Abraham\\DownloadshistogramVote_count.png"))
+    .write(new File("C:\\Users\\Abraham\\Downloads\\Vote_count.png"))
 
   //Datos tipo cadena
 
@@ -135,7 +133,7 @@ object graficas extends App {
     .frame()
     .bottomLegend()
     .render()
-    .write(new File("C:\\Users\\Abraham\\DownloadsBarchartGenres.png"))
+    .write(new File("C:\\Users\\Abraham\\Downloads\\Genres.png"))
 
   val release_date = data.flatMap(x => x.get("release_date"))
     .groupBy(identity)
@@ -151,7 +149,7 @@ object graficas extends App {
     .frame()
     .bottomLegend()
     .render()
-    .write(new File("C:\\Users\\Abraham\\DownloadsBarchartRelease_date.png"))
+    .write(new File("C:\\Users\\Abraham\\Downloads\\Release_date.png"))
 
   val status = data.flatMap(x => x.get("status"))
     .groupBy(identity)
@@ -167,41 +165,7 @@ object graficas extends App {
     .frame()
     .bottomLegend()
     .render()
-    .write(new File("C:\\Users\\Abraham\\DownloadsBarchartStatus.png"))
-
-  val title = data.flatMap(x => x.get("title"))
-    .groupBy(identity)
-    .map { case (keyword, lista) => (keyword, lista.size) }
-    .toList
-    .sortBy(_._2)
-    .reverse
-
-  BarChart(title.take(10).map(_._2).map(_.toDouble))
-    .title("title")
-    .xAxis(title.take(10).map(_._1))
-    .yAxis()
-    .frame()
-    .bottomLegend()
-    .render()
-    .write(new File("C:\\Users\\Abraham\\DownloadsBarcharTitle.png"))
-
-  val director = data.flatMap(x => x.get("director"))
-    .groupBy(identity)
-    .map { case (keyword, lista) => (keyword, lista.size) }
-    .toList
-    .sortBy(_._2)
-    .reverse
-
-  BarChart(director.take(10).map(_._2).map(_.toDouble))
-    .title("director")
-    .xAxis(director.take(10).map(_._1))
-    .yAxis()
-    .frame()
-    .bottomLegend()
-    .render()
-    .write(new File("C:\\Users\\Abraham\\DownloadsBarchartDirector.png"))
+    .write(new File("C:\\Users\\Abraham\\Downloads\\Status.png"))
 
 }
-
-
 
